@@ -21,8 +21,21 @@ class Airline:
         except:
             print("Your departure date is incorrect")
 
+    def getDestination(self):
+        return self.destination
 
-# import datetime
-# a = datetime.datetime.today().strftime("%d.%m.%Y")
-# print(a)
-# print(type(a))
+    def getFlight_id(self):
+        return self.flight_id
+
+    def getPlane_type(self):
+        return self.plane_type
+
+    def getDepart_date(self):
+        try:
+            if self.depart_date < datetime.datetime.today().strftime("%d.%m.%Y"):
+                raise Exception("Missing data")
+            else:
+                self.depart_date
+        except:
+            print("Your departure date is incorrect")
+            return
