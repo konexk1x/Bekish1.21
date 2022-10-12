@@ -8,41 +8,50 @@ import datetime
 
 class Airline:
     def __init__(self, destination, flight_id, plane_type, depart_date, depart_time, day_of_week):
+
         try:
             if depart_date < datetime.datetime.today().strftime("%d.%m.%Y"):
                 raise Exception("Missing data")
             else:
-                self.destination = destination
-                self.flight_id = flight_id
-                self.plane_type = plane_type
-                self.depart_date = depart_date
-                self.depart_time = depart_time
-                self.day_of_week = day_of_week
+                self.__destination = destination
+                self.__flight_id = flight_id
+                self.__plane_type = plane_type
+                self.__depart_date = depart_date
+                self.__depart_time = depart_time
+                self.__day_of_week = day_of_week
         except:
             print("Your departure date is incorrect")
 
     def getDestination(self):
-        return self.destination
+        return self.__destination
 
     def getFlight_id(self):
-        return self.flight_id
+        return self.__flight_id
 
     def getPlane_type(self):
-        return self.plane_type
+        return self.__plane_type
 
     def getDepart_date(self):
         try:
-            if self.depart_date < datetime.datetime.today().strftime("%d.%m.%Y"):
+            if self.__depart_date < datetime.datetime.today().strftime("%d.%m.%Y"):
                 raise Exception("Missing data")
             else:
-                return self.depart_date
+                return self.__depart_date
         except:
             print("Your departure date is incorrect")
             return
 
     def getDepart_time(self):
-        return self.depart_time
+        return self.__depart_time
 
     def getDay_of_week(self):
-        return self.day_of_week
+        return self.__day_of_week
 
+    def setDestination(self, destination):
+        self.__destination = destination
+
+    def setFlight_id(self, flight_id):
+        self.__flight_id = flight_id
+
+    def setPlane_type(self, plane_type):
+        self.__plane_type = plane_type
