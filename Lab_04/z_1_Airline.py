@@ -11,7 +11,7 @@ class Airline:
 
         try:
             if depart_date < datetime.datetime.today().strftime("%d.%m.%Y"):
-                raise Exception("Missing data")
+                raise Exception("Wrong data")
             else:
                 self.__destination = destination
                 self.__flight_id = flight_id
