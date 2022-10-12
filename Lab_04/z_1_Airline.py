@@ -55,3 +55,13 @@ class Airline:
 
     def setPlane_type(self, plane_type):
         self.__plane_type = plane_type
+
+    # def setDepart_date(self, depart_date):
+    #     try:
+    #         if self.__depart_date < datetime.datetime.today().strftime("%d.%m.%Y"):
+    #             raise Exception("Missing data")
+    #         else:
+    #             self.__depart_date = depart_date
+    #     except:
+    #         print("Your departure date is incorrect")
+    #         return
