@@ -35,7 +35,14 @@ class Airline:
             if self.depart_date < datetime.datetime.today().strftime("%d.%m.%Y"):
                 raise Exception("Missing data")
             else:
-                self.depart_date
+                return self.depart_date
         except:
             print("Your departure date is incorrect")
             return
+
+    def getDepart_time(self):
+        return self.depart_time
+
+    def getDay_of_week(self):
+        return self.day_of_week
+
