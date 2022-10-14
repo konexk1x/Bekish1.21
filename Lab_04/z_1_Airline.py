@@ -68,12 +68,15 @@ class Airline:
 
 
 airlineList = []
-airline1 = Airline("New-York", "BD-9934", "Boeing 787", "2022-10-14", "17:00", "Wednesday")
-airline2 = Airline("New-York", "BD-9934", "Boeing 787", "2022-10-16", "17:00", "Wednesday")
-airline3 = Airline("New-York", "BD-9934", "Boeing 787", "2022-10-16", "17:00", "Wednesday")
-airline4 = Airline("New-York", "BD-9934", "Boeing 787", "2022-10-16", "17:00", "Wednesday")
-airline5 = Airline("New-York", "BD-9934", "Boeing 787", "2022-10-16", "17:00", "Wednesday")
-airline6 = Airline("New-York", "BD-9934", "Boeing 787", "2022-10-16", "17:00", "Wednesday")
+airline1 = Airline("New-York", "AA7594", "Boeing 777", "2022-10-25", "11:00", "Tuesday")
+airline2 = Airline("London", "DF8845", "Airbus A320", "2022-11-10", "12:30", "Thursday")
+airline7 = Airline("Paris", "GT8392", "Boeing 737", "2022-10-26", "14:00", "Wednesday")
+airline4 = Airline("New-York", "AB9503", "Boeing 787 Dreamliner", "2022-11-7", "9:00", "Monday")
+airline5 = Airline("Tokio", "RI9432", "Airbus A320", "2022-12-16", "22:30", "Friday")
+airline6 = Airline("Washington", "NH1123", "Airbus A350", "2022-11-19", "17:00", "Saturday")
+airline7 = Airline("Paris", "EW9731", "Boeing 787", "2022-10-23", "10:00", "Sunday")
+airline8 = Airline("Barcelona", "MH0742", "Embraer E175", "2022-12-23", "20:30", "Friday")
+airline9 = Airline("Warsaw", "SW2109", "Airbus A320", "2022-11-8", "15:00", "Tuesday")
 
 airlineList.append(airline1)
 airlineList.append(airline2)
