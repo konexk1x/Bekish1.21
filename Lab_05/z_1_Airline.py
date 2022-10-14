@@ -1,8 +1,5 @@
-# Kласс Airline: Пункт назначения, Номер рейса, Тип самолета, Время вылета, Дни недели.
-# Функции-члены реализуют запись и считывание полей (проверка корректности).
-# Создать список объектов. Вывести:
-# a) список рейсов для заданного пункта назначения;
-# б) список рейсов для заданного дня недели;
+# Kласс Airline
+
 import datetime
 
 
@@ -13,12 +10,12 @@ class Airline:
             if depart_date < datetime.datetime.today().strftime("%Y-%m-%d"):
                 raise Exception("Wrong data")
             else:
-                self.__destination = destination  # Пункт назначения
-                self.__flight_id = flight_id  # Номер рейса
-                self.__plane_type = plane_type  # Тип самолета
-                self.__depart_date = depart_date  # Дата вылета
-                self.__depart_time = depart_time  # Время вылета
-                self.__day_of_week = day_of_week  # День недели
+                self.__destination = destination   # Пункт назначения
+                self.__flight_id = flight_id       # Номер рейса
+                self.__plane_type = plane_type     # Тип самолета
+                self.__depart_date = depart_date   # Дата вылета
+                self.__depart_time = depart_time   # Время вылета
+                self.__day_of_week = day_of_week   # День недели
         except:
             print("Your departure date is incorrect")
 
@@ -63,13 +60,8 @@ class Airline:
         self.__depart_date = depart_date
         return
 
-    @staticmethod
-    def findBydestination(airlineList, destination):
-        print(f"Список рейсов до пункта назначения: {destination}")
-        for i in airlineList:
-            if i.getDestination() == destination:
-                print(f"Номер рейса: {i.getFlight_id()}, Тип самолета: {i.getPlane_type()}, День и время вылета: "
-                      f"{i.getDay_of_week()} {i.getDepart_date()} {i.getDepart_time()}")
+    def __str__(self):
+        return f"{self.__destination}, {self.__flight_id}, {self.__plane_type}, {self.__depart_date}, {self.__depart_time}, {self.__day_of_week}"
 
 
 airlineList = []
@@ -93,4 +85,4 @@ airlineList.append(airline7)
 airlineList.append(airline8)
 airlineList.append(airline9)
 
-Airline.findBydestination(airlineList, "New-York")
+print(f"реализация __str__: {airline1}")
