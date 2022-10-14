@@ -7,7 +7,7 @@ import datetime
 
 
 class Airline:
-
+    airlineList = []
     def __init__(self, destination, flight_id, plane_type, depart_date, depart_time, day_of_week):
 
         try:
@@ -72,8 +72,7 @@ class Airline:
                 print(f"Номер рейса: {i.getFlight_id()}, Тип самолета: {i.getPlane_type()}, День и время вылета: "
                       f"{i.getDay_of_week()} {i.getDepart_date()} {i.getDepart_time()}")
 
-    def findByDay(self, day_of_week):
-
+    def findByDay()
 
 airlineList = []
 airline1 = Airline("New-York", "AA7594", "Boeing 777", "2022-10-25", "11:00", "Tuesday")
@@ -97,5 +96,3 @@ airlineList.append(airline8)
 airlineList.append(airline9)
 
 Airline.findBydestination(airlineList, "New-York")
-
-
