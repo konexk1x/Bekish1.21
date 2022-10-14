@@ -13,12 +13,12 @@ class Airline:
             if depart_date < datetime.datetime.today().strftime("%Y-%m-%d"):
                 raise Exception("Wrong data")
             else:
-                self.__destination = destination
-                self.__flight_id = flight_id
-                self.__plane_type = plane_type
-                self.__depart_date = depart_date
-                self.__depart_time = depart_time
-                self.__day_of_week = day_of_week
+                self.__destination = destination   # Пункт назначения
+                self.__flight_id = flight_id       # Номер рейса
+                self.__plane_type = plane_type     # Тип самолета
+                self.__depart_date = depart_date   # Дата вылета
+                self.__depart_time = depart_time   # Время вылета
+                self.__day_of_week = day_of_week   # День недели
         except:
             print("Your departure date is incorrect")
 
@@ -70,7 +70,7 @@ class Airline:
 airlineList = []
 airline1 = Airline("New-York", "AA7594", "Boeing 777", "2022-10-25", "11:00", "Tuesday")
 airline2 = Airline("London", "DF8845", "Airbus A320", "2022-11-10", "12:30", "Thursday")
-airline7 = Airline("Paris", "GT8392", "Boeing 737", "2022-10-26", "14:00", "Wednesday")
+airline3 = Airline("Paris", "GT8392", "Boeing 737", "2022-10-26", "14:00", "Wednesday")
 airline4 = Airline("New-York", "AB9503", "Boeing 787 Dreamliner", "2022-11-7", "9:00", "Monday")
 airline5 = Airline("Tokio", "RI9432", "Airbus A320", "2022-12-16", "22:30", "Friday")
 airline6 = Airline("Washington", "NH1123", "Airbus A350", "2022-11-19", "17:00", "Saturday")
@@ -80,5 +80,12 @@ airline9 = Airline("Warsaw", "SW2109", "Airbus A320", "2022-11-8", "15:00", "Tue
 
 airlineList.append(airline1)
 airlineList.append(airline2)
+airlineList.append(airline3)
+airlineList.append(airline4)
+airlineList.append(airline5)
+airlineList.append(airline6)
+airlineList.append(airline7)
+airlineList.append(airline8)
+airlineList.append(airline9)
 
 print(f"реализация __str__: {airline1}")
