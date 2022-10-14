@@ -70,6 +70,10 @@ class Airline:
 airlineList = []
 airline1 = Airline("New-York", "BD-9934", "Boeing 787", "2022-10-14", "17:00", "Wednesday")
 airline2 = Airline("New-York", "BD-9934", "Boeing 787", "2022-10-16", "17:00", "Wednesday")
+airline3 = Airline("New-York", "BD-9934", "Boeing 787", "2022-10-16", "17:00", "Wednesday")
+airline4 = Airline("New-York", "BD-9934", "Boeing 787", "2022-10-16", "17:00", "Wednesday")
+airline5 = Airline("New-York", "BD-9934", "Boeing 787", "2022-10-16", "17:00", "Wednesday")
+airline6 = Airline("New-York", "BD-9934", "Boeing 787", "2022-10-16", "17:00", "Wednesday")
 
 airlineList.append(airline1)
 airlineList.append(airline2)
