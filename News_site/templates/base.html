@@ -15,29 +15,23 @@
         <div class="header-right">
             <div style="display: flex; ">
                 <div>
-                    <div class="dropdown text-end">
-                        <button class="d-block link-dark text-decoration-none dropdown-toggle"
-                           data-bs-toggle="dropdown"
-                           aria-expanded="false">
-                                {% if user.photo_set.all %}
-                                    <img src="{{ user.photo_set.last.photo.url }}"
-                                         width="50" height="50" class="rounded-circle" alt="">{{ user.username }}
-                                {% else %}
-                                    <img src="{% static "user_logo.png" %}"
-                                         width="50" height="50" class="rounded-circle" alt="">{{ user.username }}
-                                {% endif %}
-                         <ul class="dropdown-menu text-small">
-                            <li><a class="dropdown-item" href="/news/profile/{{ user.id }}">Profile</a></li>
-                            <li><a class="dropdown-item" href="/news/password-change/">Password change</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="/news/logout">Log-Out</a></li>
-                        </ul>
-                        </button>
-                    </div>
+                    {% if user.photo_set.all %}
+                        <img src="{{ user.photo_set.last.photo.url }}"
+                             style="width: 50px; height: 50px; border-radius: 100%; margin-right: 20px" alt=""></div>
+                    {% else %}
+                        <img src="{% static "user_logo.png" %}"
+                             style="width: 50px; height: 50px; border-radius: 100%; margin-right: 20px" alt=""></div>
+                    {% endif %}
+            <div class="dropdown">
+                <button class="dropbtn ">{{ user.username }}</button>
+                <div class="dropdown-content">
+                    <a href="/news/profile/{{ user.id }}">Profile</a>
+                    <a href="/news/logout">Log-Out</a>
+                    <a href="/news/password-change/">Password change</a>
                 </div>
+
             </div>
+        </div>
         </div>
     {% else %}
         <div class="header-right">
