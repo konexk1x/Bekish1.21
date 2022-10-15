@@ -1,13 +1,8 @@
-from django.http import HttpResponse
 from .models import Link, News, Photo
-from django.shortcuts import get_object_or_404, render, redirect
+from django.shortcuts import get_object_or_404, render
 from django.views.generic.edit import FormView
-# Спасибо django за готовую форму регистрации.
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.forms import AuthenticationForm
-# Функция для установки сессионного ключа.
-# По нему django будет определять,
-# выполнил ли вход пользователь.
 from django.contrib.auth import login
 from django.http import HttpResponseRedirect
 from django.views.generic.base import View
@@ -21,11 +16,7 @@ import json
 from .models import Mark
 from django.db.models import Avg
 
-
-
-# Create your views here.
 app_url = "/news/"
-
 
 
 def index(request):
@@ -33,7 +24,7 @@ def index(request):
     if "message" in request.GET:
         message = request.GET["message"]
     # создание HTML-страницы по шаблону index.html
-    # с заданными параметрами latest_riddles и message
+    # с заданными параметрами latest_links и message
     return render(
         request,
         "index.html",
@@ -43,6 +34,7 @@ def index(request):
             "message": message
         }
     )
+
 
 def detail(request, news_id):
     error_message = None
@@ -56,29 +48,30 @@ def detail(request, news_id):
             "error_message": error_message,
             "latest_messages":
                 Message.objects
-                    .filter(chat_id=news_id)
-                    .order_by('-pub_date')[:5],
+                .filter(chat_id=news_id)
+                .order_by('-pub_date')[:5],
             "already_rated_by_user":
                 Mark.objects
-                    .filter(author_id=request.user.id)
-                    .filter(riddle_id=news_id)
-                    .count(),
+                .filter(author_id=request.user.id)
+                .filter(riddle_id=news_id)
+                .count(),
             # оценка текущего пользователя
             "user_rating":
                 Mark.objects
-                    .filter(author_id=request.user.id)
-                    .filter(riddle_id=news_id)
-                    .aggregate(Avg('mark'))
+                .filter(author_id=request.user.id)
+                .filter(riddle_id=news_id)
+                .aggregate(Avg('mark'))
                 ["mark__avg"],
             # средняя по всем пользователям оценка
             "avg_mark":
                 Mark.objects
-                    .filter(riddle_id=news_id)
-                    .aggregate(Avg('mark'))
+                .filter(riddle_id=news_id)
+                .aggregate(Avg('mark'))
                 ["mark__avg"]
 
         }
     )
+
 
 class RegisterFormView(FormView):
     # будем строить на основе
@@ -92,6 +85,7 @@ class RegisterFormView(FormView):
     # Шаблон, который будет использоваться
     # при отображении представления.
     template_name = "reg/register.html"
+
     def form_valid(self, form):
         # Создаём пользователя,
         # если данные в форму были введены корректно.
@@ -109,6 +103,7 @@ class LoginFormView(FormView):
     template_name = "reg/login.html"
     # В случае успеха перенаправим на главную.
     success_url = app_url
+
     def form_valid(self, form):
         # Получаем объект пользователя
         # на основе введённых в форму данных.
@@ -135,15 +130,18 @@ class PasswordChangeView(FormView):
     template_name = 'reg/password_change_form.html'
     # после смены пароля нужно снова входить
     success_url = app_url + 'login/'
+
     def get_form_kwargs(self):
         kwargs = super(PasswordChangeView, self).get_form_kwargs()
         kwargs['user'] = self.request.user
         if self.request.method == 'POST':
             kwargs['data'] = self.request.POST
         return kwargs
+
     def form_valid(self, form):
         form.save()
         return super(PasswordChangeView, self).form_valid(form)
+
 
 def profile(request, user_id):
     return render(
@@ -155,12 +153,14 @@ def profile(request, user_id):
         }
     )
 
+
 def post_img(request):
     photo = Photo()
     photo.user = request.user
     photo.photo = request.POST['img']
     photo.save()
     return HttpResponseRedirect(app_url + "profile/" + str(photo.user.id))
+
 
 def post(request, link_id):
     msg = Message()
@@ -170,22 +170,23 @@ def post(request, link_id):
     msg.message = request.POST['message']
     msg.pub_date = datetime.now()
     msg.save()
-    return HttpResponseRedirect(app_url+str(link_id))
+    return HttpResponseRedirect(app_url + str(link_id))
+
 
 def msg_list(request, riddle_id):
     # выбираем список сообщений
     res = list(
-            Message.objects
-                # фильтруем по id загадки
-                .filter(chat_id=riddle_id)
-                # отбираем 5 самых свежих
-                .order_by('-pub_date')[:5]
-                # выбираем необходимые поля
-                .values('author__username',
-                        'pub_date',
-                        'message'
+        Message.objects
+        # фильтруем по id загадки
+        .filter(chat_id=riddle_id)
+        # отбираем 5 самых свежих
+        .order_by('-pub_date')[:5]
+        # выбираем необходимые поля
+        .values('author__username',
+                'pub_date',
+                'message'
                 )
-            )
+    )
     # конвертируем даты в строки - сами они не умеют
     for r in res:
         r['pub_date'] = \
@@ -194,6 +195,7 @@ def msg_list(request, riddle_id):
             )
     return JsonResponse(json.dumps(res), safe=False)
 
+
 def post_mark(request, riddle_id):
     msg = Mark()
     msg.author = request.user
@@ -201,11 +203,12 @@ def post_mark(request, riddle_id):
     msg.mark = request.POST['mark']
     msg.pub_date = datetime.now()
     msg.save()
-    return HttpResponseRedirect(app_url+str(riddle_id))
+    return HttpResponseRedirect(app_url + str(riddle_id))
+
 
 def get_mark(request, news_id):
-    res = Mark.objects\
-            .filter(riddle_id=news_id)\
-            .aggregate(Avg('mark'))
+    res = Mark.objects \
+        .filter(riddle_id=news_id) \
+        .aggregate(Avg('mark'))
 
     return JsonResponse(json.dumps(res), safe=False)
