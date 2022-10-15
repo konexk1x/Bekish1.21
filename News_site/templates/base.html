@@ -16,7 +16,7 @@
             <div style="display: flex; ">
                 <div>
                     <div class="dropdown text-end">
-                        <a href="{{ user.username }}" class="d-block link-dark text-decoration-none dropdown-toggle"
+                        <button class="d-block link-dark text-decoration-none dropdown-toggle"
                            data-bs-toggle="dropdown"
                            aria-expanded="false">
                                 {% if user.photo_set.all %}
@@ -26,7 +26,7 @@
                                     <img src="{% static "user_logo.png" %}"
                                          width="50" height="50" class="rounded-circle" alt="">
                                 {% endif %}
-                        </a>
+                        </button>
                         <ul class="dropdown-menu text-small">
                             <li><a class="dropdown-item" href="/news/profile/{{ user.id }}">Profile</a></li>
                             <li><a class="dropdown-item" href="/news/password-change/">Password change</a></li>
