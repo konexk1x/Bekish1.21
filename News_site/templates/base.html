@@ -23,13 +23,15 @@
                         <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle"
                            data-bs-toggle="dropdown"
                            aria-expanded="false">
+                        <div>
                             {% if user.photo_set.all %}
                                 <img src="{{ user.photo_set.last.photo.url }}"
-                                     width="50" height="50" class="rounded-circle">
+                                     width="50" height="50" class="rounded-circle" alt="">
                             {% else %}
                                 <img src="{% static "user_logo.png" %}"
-                                     width="50" height="50" class="rounded-circle">
+                                     width="50" height="50" class="rounded-circle" alt="">
                             {% endif %}
+                        </div>
                         </a>
                         <ul class="dropdown-menu text-small">
                             <li><a class="dropdown-item" href="/news/profile/{{ user.id }}">Profile</a></li>
@@ -50,7 +52,6 @@
             <a href="/news/register">Register</a>
         </div>
     {% endif %}
-</div>
 <section class="main_section">
     <div class="main_container">
         {% block main %}
