@@ -26,8 +26,7 @@
                                     <img src="{% static "user_logo.png" %}"
                                          width="50" height="50" class="rounded-circle" alt="">{{ user.username }}
                                 {% endif %}
-                        </button>
-                        <ul class="dropdown-menu text-small">
+                         <ul class="dropdown-menu text-small">
                             <li><a class="dropdown-item" href="/news/profile/{{ user.id }}">Profile</a></li>
                             <li><a class="dropdown-item" href="/news/password-change/">Password change</a></li>
                             <li>
@@ -35,6 +34,7 @@
                             </li>
                             <li><a class="dropdown-item" href="/news/logout">Log-Out</a></li>
                         </ul>
+                        </button>
                     </div>
                 </div>
             </div>
