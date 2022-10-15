@@ -7,7 +7,6 @@ import datetime
 
 
 class Airline:
-    airlineList = []
 
     def __init__(self, destination, flight_id, plane_type, depart_date, depart_time, day_of_week):
 
