@@ -27,7 +27,7 @@ body {
 .header a.logo {
     font-family: "Old English Text MT", serif;
     font-size: 48px;
-    text-shadow: 1px 1px 2px #c4c4c4, 0 0 1em #c2c2c2;
+    text-shadow: 1px 1px 2px #c4c4c4, 0 0 1em rgba(194, 194, 194, 0);
     font-weight: bold;
 }
 
