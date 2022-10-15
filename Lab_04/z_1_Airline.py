@@ -8,6 +8,7 @@ import datetime
 
 class Airline:
     airlineList = []
+
     def __init__(self, destination, flight_id, plane_type, depart_date, depart_time, day_of_week):
 
         try:
@@ -72,7 +73,14 @@ class Airline:
                 print(f"Номер рейса: {i.getFlight_id()}, Тип самолета: {i.getPlane_type()}, День и время вылета: "
                       f"{i.getDay_of_week()} {i.getDepart_date()} {i.getDepart_time()}")
 
-    def findByDay()
+    @staticmethod
+    def findByDay(airlineList, day_of_week):
+        print(f"Список рейсов на день недели: {day_of_week}")
+        for i in airlineList:
+            if i.getDay_of_week() == day_of_week:
+                print(f"Пункт назначения: {i.getDestination()}, Номер рейса: {i.getFlight_id()}, Тип самолета: "
+                      f"{i.getPlane_type()}, Дата и время вылета: {i.getDepart_date()} {i.getDepart_time()}")
+
 
 airlineList = []
 airline1 = Airline("New-York", "AA7594", "Boeing 777", "2022-10-25", "11:00", "Tuesday")
@@ -96,3 +104,5 @@ airlineList.append(airline8)
 airlineList.append(airline9)
 
 Airline.findBydestination(airlineList, "New-York")
+print("\n")
+Airline.findByDay(airlineList, "Friday")
