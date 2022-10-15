@@ -21,14 +21,20 @@
                         <img src="{% static "user_logo.png" %}"
                              style="width: 50px; height: 50px; border-radius: 100%; margin-right: 20px" alt=""></div>
                     {% endif %}
-            <div class="dropdown">
-                <button class="dropdown-item rounded-2 active">{{ user.username }}</button>
-                <div class="dropdown-content">
-                    <a href="/news/profile/{{ user.id }}">Profile</a>
-                    <a href="/news/logout">Log-out</a>
-                    <a href="/news/password-change/">Password change</a>
+                <div class="dropdown text-end">
+                    <a href="{{ user.username }}" class="d-block link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown"
+                       aria-expanded="false">
+                        <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
+                    </a>
+                    <ul class="dropdown-menu text-small">
+                        <li><a class="dropdown-item" href="/news/profile/{{ user.id }}">Profile</a></li>
+                        <li><a class="dropdown-item" href="/news/password-change/">Password change</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="/news/logout">Log-out</a></li>
+                    </ul>
                 </div>
-
             </div>
         </div>
         </div>
