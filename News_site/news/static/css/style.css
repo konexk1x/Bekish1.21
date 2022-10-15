@@ -8,14 +8,14 @@ body {
 .header {
 
     overflow: hidden;
-    background-color: #f1f1f1;
+    background-color: #5eb7e1;
     padding: 20px 10px;
     height: 200px;
 }
 
 .header a {
     float: left;
-    color: black;
+    color: #500d76;
     text-align: center;
     padding: 12px;
     text-decoration: none;
@@ -35,8 +35,8 @@ body {
 }
 
 .header a.active {
-    background-color: dodgerblue;
-    color: white;
+    background-color: #8cc2f8;
+    color: #eaffcc;
 }
 
 h1 {
@@ -54,7 +54,7 @@ h1 {
 
 .dropbtn {
     min-width: 150px;
-    color: black;
+    color: #2a1181;
     text-align: center;
     padding: 12px;
     text-decoration: none;
@@ -71,7 +71,7 @@ h1 {
 .dropdown-content {
     display: none;
     position: absolute;
-    background-color: #f1f1f1;
+    background-color: #f3c7c7;
 
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
@@ -81,7 +81,7 @@ h1 {
 .dropdown-content a {
     text-align: left;
     width: 100%;
-    color: black;
+    color: rgba(245, 180, 180, 0.56);
     padding: 12px 16px;
     text-decoration: none;
     display: block;
