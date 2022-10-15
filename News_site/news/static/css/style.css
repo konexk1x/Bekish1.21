@@ -71,17 +71,17 @@ h1 {
 .dropdown-content {
     display: none;
     position: absolute;
-    background-color: #f3c7c7;
+    background-color: #ffffff;
 
     min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 8px 16px 0px rgba(47, 47, 47, 0.2);
     z-index: 5;
 }
 
 .dropdown-content a {
     text-align: left;
     width: 100%;
-    color: rgba(245, 180, 180, 0.56);
+    color: rgba(0, 0, 0, 0.56);
     padding: 12px 16px;
     text-decoration: none;
     display: block;
