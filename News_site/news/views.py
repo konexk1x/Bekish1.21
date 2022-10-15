@@ -57,7 +57,7 @@ def detail(request, news_id):
             "user_rating":
                 Mark.objects
                 .filter(author_id=request.user.id)
-                .filter(news__id=news_id)
+                .filter(news_id=news_id)
                 .aggregate(Avg('mark'))
                 ["mark__avg"],
             # средняя по всем пользователям оценка
