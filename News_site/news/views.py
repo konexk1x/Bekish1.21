@@ -52,19 +52,19 @@ def detail(request, news_id):
             "already_rated_by_user":
                 Mark.objects
                 .filter(author_id=request.user.id)
-                .filter(news_id=news_id)
+                .filter(riddle_id=news_id)
                 .count(),
             # оценка текущего пользователя
             "user_rating":
                 Mark.objects
                 .filter(author_id=request.user.id)
-                .filter(news_id=news_id)
+                .filter(riddle_id=news_id)
                 .aggregate(Avg('mark'))
                 ["mark__avg"],
             # средняя по всем пользователям оценка
             "avg_mark":
                 Mark.objects
-                .filter(news_id=news_id)
+                .filter(riddle_id=news_id)
                 .aggregate(Avg('mark'))
                 ["mark__avg"]
 
