@@ -1,0 +1,193 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block main %}
+
+    {% if  link %}
+        <!--suppress ALL -->
+        <div class="wrapper">
+            <h1>{{ link.link_text }}</h1>
+            {% for new in link.news_set.all %}
+                <div style="min-height: 400px">
+                    <img src="{{ new.img.url }}" style="float: left;margin: 5px 10px 10px 0; width: 400px" alt="">
+                    <p>{{ new.text }}</p>
+                </div>
+                {% if new.video_url != '0' %}
+                    <div style="margin: auto;width: 600px">
+                        <iframe width="560" height="315" src="{{ new.video_url }}" title="YouTube video player"
+                                frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen></iframe>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    {% endif %}
+    <h4>Rating</h4>
+    <p>Average rating:
+        <span id="avg_mark_span">
+            {{ avg_mark }}
+        </span>
+    </p>
+    {% if user.is_authenticated %}
+        {% if already_rated_by_user <= 0 or already_rated_by_user ==  None %}
+            <form action="post_mark/" method="post">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col-sm text-center">
+                        <label>
+                            <input name="mark"
+                                   type="radio"
+                                   value="1"/>
+                        </label> 1
+                    </div>
+                    <div class="col-sm text-center">
+                        <label>
+                            <input name="mark"
+                                   type="radio"
+                                   value="2"/>
+                        </label> 2
+                    </div>
+                    <div class="col-sm text-center">
+                        <label>
+                            <input name="mark"
+                                   type="radio"
+                                   value="3"/>
+                        </label> 3
+                    </div>
+                    <div class="col-sm text-center">
+                        <label>
+                            <input name="mark"
+                                   type="radio"
+                                   value="4"/>
+                        </label> 4
+                    </div>
+                    <div class="col-sm text-center">
+                        <label>
+                            <input name="mark"
+                                   type="radio"
+                                   value="5"/>
+                        </label> 5
+                    </div>
+                    <div class="col-sm text-center">
+                        <input class="btn btn-success"
+                               type="submit"
+                               value="Send mark"/>
+                    </div>
+                </div>
+            </form>
+        {% else %}
+            Your rating: {{ user_rating }}
+        {% endif %}
+
+    {% endif %}
+
+    <hr>
+    <h4>Chat</h4>
+    {% if user.is_authenticated %}
+        <form action="post/" method="post">
+            {% csrf_token %}
+            <div style="display: flex; justify-content: space-around">
+                <label>
+                    <input style="  width: 85%;
+      padding: 12px 20px;
+      margin: 8px 0;
+      box-sizing: border-box;
+      border: 2px solid red;
+      border-radius: 4px;" type="text"
+                           class="form-control"
+                           placeholder="Your message"
+                           name="message" required/>
+                </label>
+                <div class="input-group-append">
+                    <input style="width: 100px;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 2px solid red;
+  border-radius: 4px;"
+                           type="submit"
+                           value="Send"/>
+                </div>
+            </div>
+        </form>
+    {% endif %}
+    <div id="history">
+        {% for message in latest_messages %}
+            <hr>
+            <div class="" style="display:flex;">
+                <div>
+                    {% if message.author.photo_set.all %}
+                        <img src="{{ message.author.photo_set.last.photo.url }}"
+                             style="width: 50px; height: 50px; border-radius: 100%; margin-right: 20px" alt="">
+                    {% else %}
+                        <img src="{% static "user.png" %}"
+                             style="width: 50px; height: 50px; border-radius: 100%; margin-right: 20px" alt="">
+                    {% endif %}
+                </div>
+                <div class="">
+                    <div style="display: flex; justify-content: space-between; width: 920px">
+                        <div>
+                            <strong>
+                                {{ message.author.username }}
+                            </strong>
+                        </div>
+                        <div>
+                            <em>
+                                {{ message.pub_date|date:'Y-m-d H:i:s' }}
+                            </em>
+                        </div>
+                    </div>
+                    <br/>
+                    {{ message.message }}
+                </div>
+            </div>
+
+            <br/>
+        {% endfor %}
+    </div>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js">
+    </script>
+    <script>
+        function send_msg_update_request() {
+
+            $.get("get_mark/", {}, parse_mark_update_response);
+
+        }
+
+        function parse_mark_update_response(data) {
+            res = JSON.parse(data);
+            $("#avg_mark_span").html(res["mark__avg"].toFixed(1));
+        }
+
+        setInterval(send_msg_update_request, 5000);
+
+    </script>
+
+{% endblock %}
+
+{% comment %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% if  link %}
+    <h1>{{ link.link_text }}</h1>
+    {% for new in link.news_set.all %}
+        <div>
+            <img src="{{ new.img.url }}" style="float: left;margin: 5px 10px 10px 0px; width: 400px" alt="">
+            <p>{{ new.text }}</p>
+        </div>
+        {% if new.video_url != '0' %}
+            <div style="margin: auto;width: 600px">
+                <iframe width="560" height="315" src="{{ new.video_url }}" title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
+            </div>
+        {% endif %}
+    {% endfor %}
+{% endif %}
+</body>
+</html>{% endcomment %}
