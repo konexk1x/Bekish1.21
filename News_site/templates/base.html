@@ -21,10 +21,10 @@
                            aria-expanded="false">
                                 {% if user.photo_set.all %}
                                     <img src="{{ user.photo_set.last.photo.url }}"
-                                         width="50" height="50" class="rounded-circle" alt="">
+                                         width="50" height="50" class="rounded-circle" alt="">{{ user.username }}
                                 {% else %}
                                     <img src="{% static "user_logo.png" %}"
-                                         width="50" height="50" class="rounded-circle" alt="">
+                                         width="50" height="50" class="rounded-circle" alt="">{{ user.username }}
                                 {% endif %}
                         </button>
                         <ul class="dropdown-menu text-small">
