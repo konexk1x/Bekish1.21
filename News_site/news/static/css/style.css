@@ -25,7 +25,7 @@ body {
 }
 
 .header a.logo {
-    font-family: "Old English Text MT";
+    font-family: "Old English Text MT", serif;
     font-size: 25px;
     font-weight: bold;
 }
@@ -75,7 +75,7 @@ h1 {
     background-color: #ffffff;
 
     min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(47, 47, 47, 0.2);
+    box-shadow: 0 8px 16px 0 rgba(47, 47, 47, 0.2);
     z-index: 5;
 }
 
