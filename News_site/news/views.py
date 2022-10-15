@@ -148,7 +148,7 @@ class PasswordChangeView(FormView):
 def profile(request, user_id):
     return render(
         request,
-        "profil.html",
+        "profile.html",
         {
             "user": get_object_or_404(User, pk=user_id),
 
