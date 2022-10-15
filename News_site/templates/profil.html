@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block main %}
+    <div class="profile" style="display: flex; justify-content: center">
+        {% if  user.photo_set.all  %}
+<div>
+            <div class="photo"
+                 style=" margin-right: 40px; background-image: url('{{ user.photo_set.last.photo.url }}');  width: 200px; height: 200px;  background-repeat: no-repeat;
+                         background-position: center;
+                         background-size: contain;
+                         border-radius: 100%;"></div>
+            <form action="/news/post_img/" method="post" {% if form.is_multipart %} enctype="multipart/form-data" {% endif %} style="width: 200px">
+                {% csrf_token %}
+                <label for="img">Изменить фото профиля:</label>
+                <input type="file" id="img" name="img" accept="image/*">
+                <input type="submit">
+            </form>
+</div>
+        {% else %}
+
+       <div>
+            <div class="photo"
+                 style=" margin-right: 40px; background-image: url('{% static "user.png" %}');  width: 200px; height: 200px;  background-repeat: no-repeat;
+                         background-position: center;
+                         background-size: contain;
+                         border-radius: 100%;"></div>
+            <form action="/news/post_img/" method="post" style="width: 200px">
+                {% csrf_token %}
+                <label for="img">Изменить фото профиля:</label>
+                <input type="file" id="img" name="img" accept="image/*">
+                <input type="submit">
+            </form>
+</div>
+        {% endif %}
+        <div class="name" style="width: 300px; padding-left: 40px"><h2>{{ user.username }}</h2>
+            <p></p></div>
+    </div>
+{% endblock %}
