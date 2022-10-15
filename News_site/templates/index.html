@@ -1,7 +1,5 @@
 {% extends 'base.html' %}
 {% block main %}
-
-
     <wrapper>
         {% if latest_links %}
             {% for link in latest_links %}
@@ -11,8 +9,6 @@
                         <div class="container">
                             <h4 style="text-align: center"><b>{{ link.link_text }}</b></h4>
                             <p>EMPTY</p>
-
-
                         </div>
                     </div>
                 </a>
@@ -21,6 +17,4 @@
             <p>There is no news here yet</p>
         {% endif %}
     </wrapper>
-
-
 {% endblock %}
