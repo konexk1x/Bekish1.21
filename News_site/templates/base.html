@@ -9,7 +9,7 @@
 </head>
 <body>
 <div class="header">
-    <a href="/news/" class="logo">Новости</a>
+    <a href="/news/" class="logo">NEWS</a>
     {% if user.is_authenticated %}
         <div class="header-right">
             <div style="display: flex; ">
@@ -24,9 +24,9 @@
             <div class="dropdown">
                 <button class="dropbtn ">{{ user.username }}</button>
                 <div class="dropdown-content">
-                    <a href="/news/profile/{{ user.id }}">Профиль</a>
-                    <a href="/news/logout">Выход</a>
-                    <a href="/news/password-change/">Смена пароля</a>
+                    <a href="/news/profile/{{ user.id }}">Profile</a>
+                    <a href="/news/logout">Log-out</a>
+                    <a href="/news/password-change/">Password change</a>
                 </div>
             </div>
         </div>
@@ -37,8 +37,8 @@
     {% else %}
         <div class="header-right">
 
-            <a href="/news/login">Войти</a>
-            <a href="/news/register">Зарегестрироваться</a>
+            <a href="/news/login">Log-In</a>
+            <a href="/news/register">Register</a>
         </div>
     {% endif %}
 </div>
