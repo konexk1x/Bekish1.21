@@ -1,20 +1,21 @@
-from .models import Link, News, Photo
-from django.shortcuts import get_object_or_404, render
-from django.views.generic.edit import FormView
-from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth.forms import AuthenticationForm
-from django.contrib.auth import login
-from django.http import HttpResponseRedirect
-from django.views.generic.base import View
-from django.contrib.auth import logout
-from django.contrib.auth.forms import PasswordChangeForm
-from django.contrib.auth.models import User
-from .models import Message
-from datetime import datetime
-from django.http import JsonResponse
 import json
-from .models import Mark
+from datetime import datetime
+from django.contrib.auth import login
+from django.contrib.auth import logout
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.forms import PasswordChangeForm
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
 from django.db.models import Avg
+from django.http import HttpResponseRedirect
+from django.http import JsonResponse
+from django.shortcuts import get_object_or_404, render
+from django.views.generic.base import View
+from django.views.generic.edit import FormView
+
+from .models import Link, Photo
+from .models import Mark
+from .models import Message
 
 app_url = "/news/"
 
