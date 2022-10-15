@@ -88,7 +88,7 @@ h1 {
 }
 
 .dropdown-content a:hover {
-    background-color: #ddd;
+    background-color: #a1f5a4;
 }
 
 .dropdown:hover .dropdown-content {
@@ -97,12 +97,12 @@ h1 {
 
 .dropdown:hover .dropbtn {
     background-color: dodgerblue;
-    color: white;
+    color: #ecc7c7;
 }
 
 section {
     min-height: 600px;
-    background: #e2e2e2;
+    background: #99f8d7;
     margin-top: -150px;
     padding-bottom: 30px;
 
