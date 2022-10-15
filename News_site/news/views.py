@@ -1,24 +1,26 @@
-from .models import Link, News, Photo
-from django.shortcuts import get_object_or_404, render, redirect
-from django.views.generic.edit import FormView
-# Спасибо django за готовую форму регистрации.
-from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth.forms import AuthenticationForm
+import json
+from datetime import datetime
+
 # Функция для установки сессионного ключа.
 # По нему django будет определять,
 # выполнил ли вход пользователь.
 from django.contrib.auth import login
-from django.http import HttpResponseRedirect
-from django.views.generic.base import View
 from django.contrib.auth import logout
+from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.forms import PasswordChangeForm
+# Спасибо django за готовую форму регистрации.
+from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from .models import Message
-from datetime import datetime
-from django.http import JsonResponse
-import json
-from .models import Mark
 from django.db.models import Avg
+from django.http import HttpResponseRedirect
+from django.http import JsonResponse
+from django.shortcuts import get_object_or_404, render
+from django.views.generic.base import View
+from django.views.generic.edit import FormView
+
+from .models import Link, Photo
+from .models import Mark
+from .models import Message
 
 app_url = "/news/"
 
@@ -108,6 +110,10 @@ class LoginFormView(FormView):
     # В случае успеха перенаправим на главную.
     success_url = app_url
 
+    def __init__(self, **kwargs):
+        super().__init__(kwargs)
+        self.user = None
+
     def form_valid(self, form):
         # Получаем объект пользователя
         # на основе введённых в форму данных.
@@ -117,14 +123,17 @@ class LoginFormView(FormView):
         return super(LoginFormView, self).form_valid(form)
 
 
+def get(request):
+    # Выполняем выход для пользователя,
+    # запросившего данное представление.
+    logout(request)
+    # После чего перенаправляем пользователя на
+    # главную страницу.
+    return HttpResponseRedirect(app_url)
+
+
 class LogoutView(View):
-    def get(self, request):
-        # Выполняем выход для пользователя,
-        # запросившего данное представление.
-        logout(request)
-        # После чего перенаправляем пользователя на
-        # главную страницу.
-        return HttpResponseRedirect(app_url)
+    pass
 
 
 class PasswordChangeView(FormView):

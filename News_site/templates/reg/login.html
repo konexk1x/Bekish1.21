@@ -10,7 +10,7 @@ href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
 </head>
 <body>
 <div style="width: 410px; margin: auto; padding: 20px ">
-    <h4 class="card-title">Log in to your account</h4>
+    <h4 class="card-title">Log-in your account</h4>
 <form method="post">
     {% csrf_token %}
     <input type="hidden" name="next" value="{{ next }}">
@@ -19,7 +19,7 @@ href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
         Log in
     </button>
     <a href="/news/" class="btn btn-danger btn-block">
-        Back to home
+        Back to homepage
     </a>
 </form>
 
