@@ -30,19 +30,18 @@
                                 <img src="{% static "user_logo.png" %}"
                                      width="50" height="50" class="rounded-circle">
                             {% endif %}
-                <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
-                </a>
-                <ul class="dropdown-menu text-small">
-                    <li><a class="dropdown-item" href="/news/profile/{{ user.id }}">Profile</a></li>
-                    <li><a class="dropdown-item" href="/news/password-change/">Password change</a></li>
-                    <li>
-                        <hr class="dropdown-divider">
-                    </li>
-                    <li><a class="dropdown-item" href="/news/logout">Log-Out</a></li>
-                </ul>
+                        </a>
+                        <ul class="dropdown-menu text-small">
+                            <li><a class="dropdown-item" href="/news/profile/{{ user.id }}">Profile</a></li>
+                            <li><a class="dropdown-item" href="/news/password-change/">Password change</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="/news/logout">Log-Out</a></li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-
-
         </div>
         </div>
     {% else %}
