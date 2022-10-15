@@ -6,6 +6,7 @@
     <title>NEWS SITE</title>
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" href="{% static 'css/card.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
 </head>
 <body>
 <div class="header">
@@ -14,25 +15,35 @@
         <div class="header-right">
             <div style="display: flex; ">
                 <div>
-                    {% if user.photo_set.all  %}
-                        <img src="{{ user.photo_set.last.photo.url }}"
-                             style="width: 50px; height: 50px; border-radius: 100%; margin-right: 20px" alt=""></div>
-                    {% else %}
-                        <img src="{% static "user_logo.png" %}"
-                             style="width: 50px; height: 50px; border-radius: 100%; margin-right: 20px" alt=""></div>
-                    {% endif %}
-            <div class="dropdown">
-                <button class="dropbtn ">{{ user.username }}</button>
-                <div class="dropdown-content">
-                    <a href="/news/profile/{{ user.id }}">Profile</a>
-                    <a href="/news/logout">Log-out</a>
-                    <a href="/news/password-change/">Password change</a>
-                </div>
+                    <div class="dropdown">
+                        <button class="dropbtn ">{{ user.username }}</button>
+                    </div>
+
+                    <div class="dropdown text-end">
+                        <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle"
+                           data-bs-toggle="dropdown"
+                           aria-expanded="false">
+                            {% if user.photo_set.all %}
+                                <img src="{{ user.photo_set.last.photo.url }}"
+                                     width="50" height="50" class="rounded-circle">
+                            {% else %}
+                                <img src="{% static "user_logo.png" %}"
+                                     width="50" height="50" class="rounded-circle">
+                            {% endif %}
+                <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
+                </a>
+                <ul class="dropdown-menu text-small">
+                    <li><a class="dropdown-item" href="/news/profile/{{ user.id }}">Profile</a></li>
+                    <li><a class="dropdown-item" href="/news/password-change/">Password change</a></li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                    <li><a class="dropdown-item" href="/news/logout">Log-Out</a></li>
+                </ul>
             </div>
+
+
         </div>
-        {% comment %}        <a class="active" href="#home">Home</a>
-        <a href="#contact">Contact</a>
-        <a href="#about">About</a>{% endcomment %}
         </div>
     {% else %}
         <div class="header-right">
